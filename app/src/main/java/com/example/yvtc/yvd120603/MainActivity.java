@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -137,24 +138,35 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
+            Log.d("POSITION", "position:" + position);
+            if (position == 1)
+                return new FragmentButton();
+            if (position == 2)
+                return new FragmentImage();
+            if (position == 3)
+                return new FragmentList();
             return PlaceholderFragment.newInstance(position + 1);
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 5;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "SECTION 1";
+                    return "SEC1";
                 case 1:
-                    return "Button";
+                    return "Btn";
                 case 2:
-                    return "Image";
+                    return "Img";
+                case 3:
+                    return "SEC4";
+                case 4:
+                    return "SEC5";
             }
             return null;
         }
